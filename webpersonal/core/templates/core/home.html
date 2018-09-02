@@ -2,9 +2,16 @@
 
 {% block title %} Mi web Personal {% endblock %}
 
-{% block content %}
-<h2>Portada</h2>
-<p>Esto es la portada</p>
+{% load static %}
+
+{% block background %} {% static 'core/img/home-bg.jpg' %} {% endblock %}
+
+{% block headers %} 
+	<h1>Ivan Cruzado Espino</h1>
+    <span class="subheading">Ingeníero de Sistemas</span>
 {% endblock %}
 
+{% block content %} 
+
+{% endblock %}
 

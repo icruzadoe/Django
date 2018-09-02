@@ -50,23 +50,29 @@
     </nav>
 
     <!-- Cabecera -->
-    <header class="masthead" style="background-image: url('{% static 'core/img/home-bg.jpg' %}')">
+    <header class="masthead" style="background-image: url('{% block background %} {% endblock %}')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>Ivan Cruzado Espino</h1>
-              <span class="subheading">Ingeniero de Sistemas</span>
+
+              {% block headers %} {% endblock %}
+          
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- CONTENIDO -->
-    {% block content%} {% endblock %}
-    
+    <!-- Contenido-->
+    <div class="container">  
+        {% block content %} {% endblock %}
+    </div>
+
+    <!-- hr -->
+    {% if request.path != "/" %} <hr> {% endif %}
+
     <!-- Pié de página -->
     <footer>
       <div class="container">
@@ -98,7 +104,7 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; 2018 · Ivan Cruzado Espino(Ingeniero de Sistemas) </p>
+            <p class="copyright text-muted">Copyright &copy; 2018 · Ivan Cruzado Espino(Ingeníero de Sistemas) </p>
           </div>
         </div>
       </div>
