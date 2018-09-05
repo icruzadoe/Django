@@ -15,14 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core import views
+#no podemos importar 2 veces lo mismo, como en core y portfolio que seria views
+from core import views as core_views
+from portfolio import views as portfolio_views
+#cargamos el fichero settings de la carpeta webpersonal dentro de la memoria, ya que ahi sacaremos MEDIA_URL y MEDIA_ROOT
+from django.conf import settings
 
+#
 
 urlpatterns = [
-	path('',views.home, name="home"),
-	path('about/',views.about, name="about"),
-	path('portafolio/',views.portafolio, name="portafolio"),
-	path('contacto/',views.contact, name="contacto"),
+	path('',core_views.home, name="home"),
+	path('about/',core_views.about, name="about"),
+	path('portafolio/',portfolio_views.portafolio, name="portafolio"),
+	path('contacto/',core_views.contact, name="contacto"),
     path('admin/', admin.site.urls),
 ]
 
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
